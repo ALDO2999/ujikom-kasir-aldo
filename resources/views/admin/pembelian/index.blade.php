@@ -20,9 +20,10 @@
                     <table id="penjualanTable" class="table table-striped">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th>No</th>
                                 <th>Nama Pelanggan</th>
                                 <th>Tanggal Penjualan</th>
+                                <th>Koin</th>
                                 <th>Total Harga</th>
                                 <th>Dibuat Oleh</th>
                                 <th class="text-end"></th>
@@ -34,11 +35,13 @@
                                     <td>{{ $index + 1 }}</td>
                                     <td>{{ $order->customer->name ?? 'NON–MEMBER' }}</td>
                                     <td>{{ $order->created_at->format('Y-m-d') }}</td>
+                                    <td>{{ $order->points ?? '0' }}</td>
                                     <td>Rp. {{ number_format($order->final_price, 0, ',', '.') }}</td>
-                                    <td>Petugas</td>
                                     <td class="text-end">
-                                        <a href="#" class="btn btn-warning btn-sm">Lihat</a>
-                                        <a href="#" class="btn btn-primary btn-sm">Unduh Bukti</a>
+                                        <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal-{{ $order->id }}">
+                                            Lihat
+                                        </button>                                                                                                           
+                                        <a href="{{ route('pembelian.print', $order->id) }}" class="btn btn-primary btn-sm">Unduh Bukti</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -49,6 +52,11 @@
         </div>
     </div>
 
+       
+    @foreach ($orders as $order)
+        <x-detail-penjualan :order="$order" />
+    @endforeach
+    
     @push('scripts')
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

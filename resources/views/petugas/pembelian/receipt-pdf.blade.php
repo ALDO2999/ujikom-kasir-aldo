@@ -57,6 +57,10 @@
             <td class="text-end">{{ number_format($order->discount, 0, ',', '.') }}</td>
         </tr>
         <tr>
+            <td><strong>Total Yang Di Bayarkan</strong></td>
+            <td class="text-end">Rp. {{ number_format($order->amount_paid, 0, ',', '.') }}</td>
+        </tr>
+        <tr>
             <td><strong>Harga Setelah Poin</strong></td>
             <td class="text-end">Rp. {{ number_format($order->final_price, 0, ',', '.') }}</td>
         </tr>

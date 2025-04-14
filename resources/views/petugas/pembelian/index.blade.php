@@ -21,10 +21,11 @@
                     <table id="penjualanTable" class="table table-striped">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th>No</th>
                                 <th>Nama Pelanggan</th>
                                 <th>Tanggal Penjualan</th>
                                 <th>Total Harga</th>
+                                <th>Koin</th>
                                 <th>Dibuat Oleh</th>
                                 <th class="text-end"></th>
                             </tr>
@@ -36,6 +37,7 @@
                                     <td>{{ $order->customer->name ?? 'NON–MEMBER' }}</td>
                                     <td>{{ $order->created_at->format('Y-m-d') }}</td>
                                     <td>Rp. {{ number_format($order->final_price, 0, ',', '.') }}</td>
+                                    <td>{{ $order->customer->points ?? '0' }}</td>
                                     <td>Petugas</td>
                                     <td class="text-end">
                                         <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal-{{ $order->id }}">

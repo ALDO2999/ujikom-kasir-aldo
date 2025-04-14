@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login dulu mazehhh</title>
+    <title>Login dulu yo</title>
     
     {{-- Bootstrap 5 CDN --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -11,7 +11,7 @@
 <body class="bg-light d-flex justify-content-center align-items-center vh-100">
 
     <div class="card shadow p-4" style="width: 100%; max-width: 400px;">
-        <h3 class="text-center mb-4">Login dulu mazehhh</h3>
+        <h3 class="text-center mb-4">Login dulu yo</h3>
 
         {{-- Notifikasi error dari validasi --}}
         @if ($errors->any())

@@ -29,7 +29,7 @@
             let productName = button.getAttribute('data-name');
     
             let form = document.getElementById('deleteForm');
-            form.action = `/admin/product/${productId}`;
+            form.action = `/product/delete/${productId}`;
     
             document.getElementById('deleteProductName').textContent = productName;
         });    

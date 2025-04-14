@@ -7,24 +7,30 @@ use App\Models\OrderDetail\OrderDetail;
 use App\Models\Pembelian\Pembelian;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
     public function dashboardPetugas()
-        {
-            $today = Carbon::today();
-
-            $totalPenjualanHariIni = Pembelian::whereDate('created_at', $today)->count();
-            
-            $waktuUpdate = Pembelian::latest('created_at')->first()?->created_at;
-            $formattedWaktuUpdate = $waktuUpdate ? $waktuUpdate->format('d M Y H:i') : '-';
-
-            return view('petugas.dashboard', [
-                'totalPenjualanHariIni' => $totalPenjualanHariIni,
-                'waktuUpdate' => $formattedWaktuUpdate,
-            ]);
-        }
+    {
+     $today = Carbon::today();
+    
+     $totalPenjualanHariIni = Pembelian::whereDate('created_at', $today)
+     ->where('user_id', Auth::id()) // ganti ke user_id
+     ->count();
+    
+     $waktuUpdate = Pembelian::where('user_id', Auth::id())
+     ->latest('created_at')
+      ->first()?->created_at;
+    
+    $formattedWaktuUpdate = $waktuUpdate ? $waktuUpdate->format('d M Y H:i') : '-';
+    
+     return view('petugas.dashboard', [
+    'totalPenjualanHariIni' => $totalPenjualanHariIni,
+    'waktuUpdate' => $formattedWaktuUpdate,
+     ]);
+    }
 
 
         public function dashboardAdmin()    

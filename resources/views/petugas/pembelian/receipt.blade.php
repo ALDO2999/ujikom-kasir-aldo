@@ -61,7 +61,11 @@
                     <div class="text-muted small">KEMBALIAN</div>
                     <div class="fw-bold fs-5">Rp. {{ number_format($order->change, 0, ',', '.') }}</div>
                 </div>
-                <div class="col-md-3 bg-dark text-white p-3 rounded text-end">
+                <div class="col-md-3">
+                    <div class="text-muted small">TOTAL BAYAR</div>
+                    <div class="fw-bold fs-5">Rp. {{ number_format($order->amount_paid, 0, ',', '.') }}</div>
+                </div>
+                <div class="col-md-3 bg-dark text-white p-3 mt-5 rounded text-end">
                     <div class="text-uppercase small">Total</div>
 
                     @php

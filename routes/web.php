@@ -24,6 +24,8 @@ Route::middleware('guest')->group(function () {
 
 
 
+Route::middleware(['auth', 'role:admin'])->group(function () {
+
     Route::get('/admin/dashboard', [DashboardController::class, 'dashboardAdmin'])->name('admin.dashboard');
 
 
@@ -53,6 +55,10 @@ Route::middleware('guest')->group(function () {
     Route::put('/user/update/{id}', [AuthController::class, 'update'])->name('user.update');
     Route::delete('/user/delete/{id}', [AuthController::class, 'destroy'])->name('user.delete');
 
+});
+
+
+Route::middleware(['auth', 'role:petugas'])->group(function () {
 
 
 
@@ -74,10 +80,10 @@ Route::middleware('guest')->group(function () {
 
 
 
-    Route::get('/print/{order}', [PembelianController::class, 'print'])->name('pembelian.print');
-
-
-
+    
+    
+});
+Route::get('/print/{order}', [PembelianController::class, 'print'])->name('pembelian.print');
 
 
 
