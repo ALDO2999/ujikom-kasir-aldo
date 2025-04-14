@@ -34,21 +34,21 @@
                     <span>Penjualan</span>
                 </a>
             </li> --}}
-{{-- 
+
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('user.index') ? '' : 'collapsed' }}"
                     href="{{ route('user.index') }}">
                     <i class="bi bi-grid"></i>
                     <span>User</span>
                 </a>
-            </li> --}}
-            {{-- <li>
+            </li>
+            <li>
                 <a class="nav-link {{ request()->routeIs('logout') ? '' : 'collapsed' }}"
                     href="{{ route('logout') }}">
                     <i class="bi bi-box-arrow-right"></i>
                     <span>Sign Out</span>
                 </a>
-            </li> --}}
+            </li>
     {{-- @endif --}}
 
 
